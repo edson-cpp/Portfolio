@@ -25,5 +25,12 @@ jobs:
           rsync -avz --delete \
             --exclude ".git" \
             --exclude ".github" \
+            --exclude "README.md" \
+            --exclude "package*.json" \
+            --exclude "tailwind.config.js" \
             ./ edson@91.99.28.248:/var/www/edsonaguiar.dev/
 
+      - name: Verify deployment
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no edson@91.99.28.248 \
+          "ls -l /var/www/edsonaguiar.dev/index.html"
