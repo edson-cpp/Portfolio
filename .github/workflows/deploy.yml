@@ -22,5 +22,5 @@ jobs:
 
       - name: Deploy files
         run: |
-          rsync -avz --delete ./ edson@91.99.28.248:/var/www/edsonaguiar.dev/
+          rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no" ./ edson@91.99.28.248:/var/www/edsonaguiar.dev/
 
