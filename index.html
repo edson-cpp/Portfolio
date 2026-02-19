@@ -148,39 +148,39 @@
                            <div class="basis-1/2 [&>div]:pb-20 [&>div:last-child]:pb-0 text-fs-15 xs:text-fs-14">
                               <div>
                                  <span class="opacity-80">
-                                 first name :
+                                 First name :
                                  </span>
                                  <span class="xs:block custom-md-2:block font-semibold">
-                                 steve
+                                 Edson
                                  </span>
                               </div>
                               <div>
                                  <span class="opacity-80">
-                                 last name :
+                                 Last name :
                                  </span>
                                  <span class="xs:block custom-md-2:block font-semibold">
-                                 milner
+                                 Aguiar
                                  </span>
                               </div>
                               <div>
                                  <span class="opacity-80">
-                                 age :
+                                 Age :
                                  </span>
                                  <span class="xs:block custom-md-2:block font-semibold">
-                                 27 years
+                                 52 years
                                  </span>
                               </div>
                               <div>
                                  <span class="opacity-80">
-                                 nationality :
+                                 Nationality :
                                  </span>
                                  <span class="xs:block custom-md-2:block font-semibold">
-                                 tunisian
+                                 Brazilian
                                  </span>
                               </div>
                               <div>
                                  <span class="opacity-80">
-                                 freelance :
+                                 Contract :
                                  </span>
                                  <span class="xs:block custom-md-2:block font-semibold">
                                  available
@@ -190,48 +190,48 @@
                            <div class="basis-1/2 [&>div]:pb-20 [&>div:last-child]:pb-0 text-fs-15 xs:text-fs-14">
                               <div>
                                  <span class="opacity-80">
-                                 address :
+                                 Address :
                                  </span>
                                  <span class="xs:block custom-md-2:block font-semibold">
-                                 tunis
+                                 596, Terra Boa Street
                                  </span>
                               </div>
                               <div>
                                  <span class="opacity-80">
-                                 phone :
+                                 Phone :
                                  </span>
                                  <span class="xs:block custom-md-2:block font-semibold">
-                                 +216 21 184 010
+                                 +55 47 92001-0473
                                  </span>
                               </div>
                               <div>
                                  <span class="opacity-80">
-                                 email :
+                                 E-mail :
                                  </span>
-                                 <span class="xs:block custom-md-2:block font-semibold">
-                                 you@mail.com
+                                 <span class="lowercase mb-16 font-Open-sans text-fs-15 xs:text-fs-14">
+                                 <a id="email-link"></a>
                                  </span>
                               </div>
-                              <div>
+                              <!--<div>
                                  <span class="opacity-80">
                                  skype :
                                  </span>
                                  <span class="xs:block custom-md-2:block font-semibold">
                                  Steve.milner
                                  </span>
-                              </div>
+                              </div>-->
                               <div>
                                  <span class="opacity-80">
-                                 langages :
+                                 Languages :
                                  </span>
                                  <span class="xs:block custom-md-2:block font-semibold">
-                                 french, english
+                                 Portuguese, English
                                  </span>
                               </div>
                            </div>
                         </div>
-                        <a class="button mt-30 overflow-hidden inline-block leading-lh-1.4 rounded-30 text-ellipsis text-center align-middle select-none transition-all duration-250 ease-in-out uppercase no-underline relative z-10 py-16 pr-70 pl-35 text-fs-15 font-semibold text-white bg-transparent outline-0 before:absolute before:-z-10 before:left-0 before:right-0 before:top-0 before:bottom-0 before:translate-x-full hover:before:translate-x-0 before:transition before:duration-300 before:ease-out" href="about.html">
-                        <span class="relative z-20 text-white">download cv</span>
+                        <a class="button mt-30 overflow-hidden inline-block leading-lh-1.4 rounded-30 text-ellipsis text-center align-middle select-none transition-all duration-250 ease-in-out uppercase no-underline relative z-10 py-16 pr-70 pl-35 text-fs-15 font-semibold text-white bg-transparent outline-0 before:absolute before:-z-10 before:left-0 before:right-0 before:top-0 before:bottom-0 before:translate-x-full hover:before:translate-x-0 before:transition before:duration-300 before:ease-out" href="Resume_Edson-Aguiar.pdf" target="_blank">
+                        <span class="relative z-20 text-white">Download CV</span>
                         <span class="absolute -right-px bottom-0 w-55 h-55 flex items-center justify-center rounded-full text-white text-fs-19 fa fa-download bg-accent"></span>
                         </a>
                      </div>
@@ -1163,5 +1163,13 @@
       <script src="assets/js/jquery.hoverdir.js"></script>
       <script src="assets/js/menu.js"></script>
       <script src="assets/js/custom.js"></script>
+      <script>
+         const user = "edson_vc";
+         const domain = "yahoo.com.br";
+         const link = document.getElementById("email-link");
+         link.target = "_blank"
+         link.href = "mailto:" + user + "@" + domain;
+         link.textContent = user + "@" + domain;
+      </script>
    </body>
 </html>
