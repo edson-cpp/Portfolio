@@ -166,9 +166,10 @@
                                  <span class="opacity-80">
                                  Age :
                                  </span>
-                                 <span class="xs:block custom-md-2:block font-semibold">
+                                 <!--<span class="xs:block custom-md-2:block font-semibold">
                                  52 years
-                                 </span>
+                                 </span>-->
+                                 <span id="age" class="xs:block custom-md-2:block font-semibold"></span>
                               </div>
                               <div>
                                  <span class="opacity-80">
@@ -1258,6 +1259,26 @@
 
             window.location.href = "mailto:" + email + "?subject=" + subject + "&body=" + body;
          });
+      </script>
+      <script>
+         const birthDate = new Date(1974, 3, 2); 
+         // Format: year, month (0-based), day
+         // Month is 0 = January, 4 = May
+
+         const today = new Date();
+
+         let age = today.getFullYear() - birthDate.getFullYear();
+
+         const hasHadBirthdayThisYear =
+            today.getMonth() > birthDate.getMonth() ||
+            (today.getMonth() === birthDate.getMonth() &&
+            today.getDate() >= birthDate.getDate());
+
+         if (!hasHadBirthdayThisYear) {
+            age--;
+         }
+
+         document.getElementById("age").textContent = age + " years";
       </script>
    </body>
 </html>
