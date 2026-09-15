@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.28)
 
 project(Portfolio VERSION 0.1.0)
 
-add_subdirectory(../Tools/nui nui)
+add_subdirectory(nui nui-build)
 
 add_executable(Portfolio
     frontend/main.cpp
