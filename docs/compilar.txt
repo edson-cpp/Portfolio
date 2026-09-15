@@ -1,0 +1,24 @@
+cd ~/Projects/Tools/Portfolio
+
+Compilar server.cpp
+g++ server.cpp -std=c++23 -o server
+
+rm -rf build
+mkdir build
+cd build
+
+Configure usando o Emscripten:
+emcmake cmake -G Ninja ..
+
+Depois compile:
+cmake --build .
+
+Para gerar o HTML através do Parcel:
+cmake --build . --target Portfolio-parcel
+
+
+Implementar
+Seletor de cores
+Seletor de idiomas
+Download do currículo de acordo com o idioma.
+Continuar I18n

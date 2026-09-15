@@ -1,16 +1,50 @@
 {
-  "name": "tunis",
-  "version": "1.0.0",
-  "description": "",
-  "main": "tailwind.config.js",
-  "dependencies": {
-    "tailwindcss": "^3.3.3"
-  },
-  "scripts": {
-    "dev": "npx tailwindcss -i build/tailwind.css -o assets/css/style.css --watch",
-    "build": "npx tailwindcss -i build/tailwind.css -o assets/css/style.css --minify"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "Portfolio",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "source": "static/index.html",
+    "targets": {
+        "main": false
+    },
+    "devDependencies": {
+        "parcel": "^2.9.1",
+        "parcel-reporter-static-files-copy": "^1.5.0"
+    },
+    "staticFiles": {
+        "staticPath": "static/assets",
+        "staticOutPath": "assets"
+    },
+    "alias": {
+        "nui": "./nui-js",
+        "nui-inline": "./inline-js",
+        "assert": false,
+        "fs": false,
+        "buffer": false,
+        "console": false,
+        "constants": false,
+        "crypto": false,
+        "domain": false,
+        "events": false,
+        "http": false,
+        "https": false,
+        "os": false,
+        "path": false,
+        "process": false,
+        "punycode": false,
+        "querystring": false,
+        "stream": false,
+        "string_decoder": false,
+        "sys": false,
+        "timers": false,
+        "tty": false,
+        "url": false,
+        "util": false,
+        "vm": false,
+        "zlib": false
+    },
+    "dependencies": {
+        "@tailwindcss/postcss": "^4.3.3",
+        "tailwindcss": "^4.3.3"
+    }
 }
