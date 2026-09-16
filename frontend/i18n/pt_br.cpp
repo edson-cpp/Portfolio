@@ -53,7 +53,19 @@ namespace I18n::Portuguese
             {"about.my_skills", "Minhas Habilidades"},
             {"about.leadership", "Liderança"},
             {"about.proactivity", "Proatividade"},
-            {"about.architecture", "Arquitetura"}
+            {"about.architecture", "Arquitetura"},
+
+            {"portfolio.my", "meu"},
+            {"portfolio.portfolio", "portifólio"},
+            {"portfolio.projects", "projetos"},
+
+            {"contact.get_in", "Entre em"},
+            {"contact.touch", "contato"},
+            {"contact.contact", "contato"},
+
+            {"blog.my", "meu"},
+            {"blog.blog", "blog"},
+            {"blog.posts", "postagens"}
         };
 
         const auto it = translations.find(std::string(key));

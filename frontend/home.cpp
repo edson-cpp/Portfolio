@@ -3,6 +3,9 @@
 
 #include <nui/frontend/attributes.hpp>
 #include <nui/frontend/elements.hpp>
+#include <emscripten/val.h>
+
+extern "C" void routeChanged();
 
 Nui::ElementRenderer HomePage::render()
 {
@@ -85,8 +88,22 @@ Nui::ElementRenderer HomePage::render()
 
                     // More About Me
                     Nui::Elements::div{
-                        id = "link-about",
-                        class_ = "button cursor-pointer overflow-hidden inline-block "
+                        Nui::Attributes::id = "link-about",
+
+                        Nui::Attributes::onClick = []() {
+                            auto window = emscripten::val::global("window");
+
+                            window["history"].call<void>(
+                                "pushState",
+                                emscripten::val{},
+                                emscripten::val{},
+                                emscripten::val("/about")
+                            );
+
+                            routeChanged();
+                        },                        
+                        
+                        Nui::Attributes::class_ = "button cursor-pointer overflow-hidden inline-block "
                                  "leading-lh-1.4 rounded-30 text-ellipsis text-center "
                                  "align-middle select-none transition-all duration-250 "
                                  "ease-in-out uppercase no-underline relative z-10 "

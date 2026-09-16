@@ -1,5 +1,6 @@
 #include "menu.hpp"
 #include "i18n/i18n.hpp"
+#include "router.hpp"
 
 #include <string>
 #include <vector>
@@ -23,20 +24,6 @@ namespace
             return "English";
 
         return "Português";
-    }
-
-    void navigateTo(std::string const& path)
-    {
-        auto window = emscripten::val::global("window");
-
-        window["history"].call<void>(
-            "pushState",
-            emscripten::val{},
-            emscripten::val{},
-            emscripten::val(path)
-        );
-
-        routeChanged();
     }
 
     std::string currentPath()

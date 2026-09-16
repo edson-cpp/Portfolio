@@ -5,10 +5,14 @@ project(Portfolio VERSION 0.1.0)
 add_subdirectory(nui nui-build)
 
 add_executable(Portfolio
+    frontend/router.cpp
     frontend/main.cpp
     frontend/menu.cpp
     frontend/home.cpp
     frontend/about.cpp
+    frontend/portfolio.cpp
+    frontend/contact.cpp
+    frontend/blog.cpp
     frontend/i18n/i18n.cpp
     frontend/i18n/en.cpp
     frontend/i18n/pt_br.cpp

@@ -1,5 +1,8 @@
 #include "home.hpp"
 #include "about.hpp"
+#include "portfolio.hpp"
+#include "contact.hpp"
+#include "blog.hpp"
 #include "i18n/i18n.hpp"
 #include "router.hpp"
 #include "menu.hpp"
@@ -15,6 +18,9 @@
 
 static std::unique_ptr<HomePage> homePage;
 static std::unique_ptr<AboutPage> aboutPage;
+static std::unique_ptr<PortfolioPage> portfolioPage;
+static std::unique_ptr<ContactPage> contactPage;
+static std::unique_ptr<BlogPage> blogPage;
 static std::unique_ptr<Menu> menu;
 static std::unique_ptr<Nui::Dom::Dom> dom;
 
@@ -67,6 +73,51 @@ void renderRoute()
                     Nui::Attributes::class_ = "w-full h-full pages overflow-hidden"
                 }(
                     aboutPage->render()
+                )
+            )
+        );
+    }
+    else if (path == "/portfolio")
+    {
+        portfolioPage = std::make_unique<PortfolioPage>();
+        dom->setBody(
+            createBody()(
+                menu->render(),
+
+                Nui::Elements::div{
+                    Nui::Attributes::class_ = "w-full h-full pages overflow-hidden"
+                }(
+                    portfolioPage->render()
+                )
+            )
+        );
+    }
+    else if (path == "/contact")
+    {
+        contactPage = std::make_unique<ContactPage>();
+        dom->setBody(
+            createBody()(
+                menu->render(),
+
+                Nui::Elements::div{
+                    Nui::Attributes::class_ = "w-full h-full pages overflow-hidden"
+                }(
+                    contactPage->render()
+                )
+            )
+        );
+    }
+    else if (path == "/blog")
+    {
+        blogPage = std::make_unique<BlogPage>();
+        dom->setBody(
+            createBody()(
+                menu->render(),
+
+                Nui::Elements::div{
+                    Nui::Attributes::class_ = "w-full h-full pages overflow-hidden"
+                }(
+                    blogPage->render()
                 )
             )
         );

@@ -53,7 +53,19 @@ std::string translate(std::string_view key)
             {"about.my_skills", "My Skills"},
             {"about.leadership", "leadership"},
             {"about.proactivity", "proactivity"},
-            {"about.architecture", "architecture"}            
+            {"about.architecture", "architecture"},
+
+            {"portfolio.my", "my"},
+            {"portfolio.portfolio", "portfolio"},
+            {"portfolio.projects", "projects"},
+
+            {"contact.get_in", "get in"},
+            {"contact.touch", "touch"},
+            {"contact.contact", "contact"},
+
+            {"blog.my", "my"},
+            {"blog.blog", "blog"},
+            {"blog.posts", "posts"}
         };
 
         const auto it = translations.find(std::string(key));
