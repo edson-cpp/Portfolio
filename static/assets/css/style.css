@@ -3955,3 +3955,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(221 221 221 / var(--tw-bg-opacity));
 }
+
+.skin-panel-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    pointer-events: auto;
+}

@@ -18,10 +18,18 @@ private:
         bool isActive = false;
     };
 
+    struct Skin
+    {
+        std::string name;
+        std::string file;
+    };
+
     Nui::ElementRenderer desktopNavItem(MenuItem const& item);
     Nui::ElementRenderer mobileNavItem(MenuItem const& item);
     Nui::ElementRenderer desktopLanguageItem();
     Nui::ElementRenderer mobileLanguageItem();
+    Nui::ElementRenderer desktopSkinItem();
+    Nui::ElementRenderer mobileSkinItem();
 
 public:
     Nui::ElementRenderer render();

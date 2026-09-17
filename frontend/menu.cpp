@@ -33,6 +33,32 @@ namespace
             ["pathname"]
             .as<std::string>();
     }
+
+    void changeSkin(std::string const& file)
+    {
+        auto document = emscripten::val::global("document");
+        auto skinCss = document.call<emscripten::val>("getElementById", std::string{"skin-css"});
+
+        skinCss.set(
+            "href",
+            "/assets/css/skins/" + file
+        );
+    }
+
+    void toggleSkinPanel()
+    {
+        auto document = emscripten::val::global("document");
+
+        auto panel = document.call<emscripten::val>(
+            "getElementById",
+            std::string{"skin-panel"}
+        );
+
+        panel["classList"].call<void>(
+            "toggle",
+            std::string{"skin-panel-visible"}
+        );
+    }
 }
 
 Nui::ElementRenderer Menu::desktopNavItem(MenuItem const& item)
@@ -125,6 +151,7 @@ Nui::ElementRenderer Menu::render()
     }
     desktopItems.push_back(desktopLanguageItem());
     mobileItems.push_back(mobileLanguageItem());
+    desktopItems.push_back(desktopSkinItem());
 
     return Nui::Elements::header{
         Nui::Attributes::id = "navbar-collapse-toggle",
@@ -250,6 +277,92 @@ Nui::ElementRenderer Menu::mobileLanguageItem()
                     "absolute left-50 xs:left-35 font-normal"
             }(
                 languageName()
+            )
+        )
+    );
+}
+
+Nui::ElementRenderer Menu::desktopSkinItem()
+{
+    using namespace Nui::Attributes;
+
+    std::vector<Skin> skins{
+        {"Yellow", "yellow.css"},
+        {"Blue", "blue.css"},
+        {"Blue Violet", "blueviolet.css"},
+        {"Goldenrod", "goldenrod.css"},
+        {"Green", "green.css"},
+        {"Magenta", "magenta.css"},
+        {"Orange", "orange.css"},
+        {"Purple", "purple.css"},
+        {"Red", "red.css"},
+        {"Yellow Green", "yellowgreen.css"}
+    };
+
+    std::vector<Nui::ElementRenderer> skinItems;
+    skinItems.reserve(skins.size());
+
+    for (auto const& skin : skins)
+    {
+        skinItems.push_back(
+            Nui::Elements::li{
+                Nui::Attributes::class_ =
+                    "cursor-pointer px-10 py-6 rounded-5 text-white "
+                    "text-fs-14 hover:bg-black-3 "
+                    "transition duration-200 whitespace-nowrap",
+
+                Nui::Attributes::onClick = [file = skin.file]() {
+                    changeSkin(file);
+                    toggleSkinPanel();
+                }
+            }(
+                skin.name
+            )
+        );
+    }
+
+    return Nui::Elements::li{
+        Nui::Attributes::class_ =
+            "desktop-nav-element cursor-pointer w-50 h-50 relative "
+            "flex items-center transition duration-300 my-20 mx-0 "
+            "rounded-full bg-black-2"
+    }(
+        // Skin button
+        Nui::Elements::div{
+            Nui::Attributes::class_ =
+                "w-50 h-50 relative flex items-center rounded-full",
+
+            Nui::Attributes::onClick = []() {
+                toggleSkinPanel();
+            }
+        }(
+            Nui::Elements::i{
+                Nui::Attributes::class_ =
+                    "fa fa-paint-brush absolute left-0 right-0 mx-auto "
+                    "block text-center top-15 pointer-events-none "
+                    "text-fs-19"
+            }()
+        ),
+
+        // Skin panel
+        Nui::Elements::div{
+            Nui::Attributes::id = "skin-panel",
+
+            Nui::Attributes::class_ =
+                "absolute bg-black-2 rounded-10 shadow-1 "
+                "p-5 opacity-0 invisible "
+                "translate-x-10 transition-all duration-300 "
+                "pointer-events-none",
+
+            Nui::Attributes::style =
+                "right: 65px; "
+                "bottom: 0; "
+                "width: 150px;"
+        }(
+            Nui::Elements::ul{
+                Nui::Attributes::class_ = "m-0 p-0"
+            }(
+                skinItems
             )
         )
     );
