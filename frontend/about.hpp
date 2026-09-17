@@ -50,7 +50,6 @@ private:
     Nui::ElementRenderer facts(int years, const std::string& firstLineDescription, const std::string& secondLineDescription);
     Nui::ElementRenderer resumeItem(std::string const& icon, std::string const& period,
         std::string const& title, std::string const& company, Nui::ElementRenderer description);
-    Nui::ElementRenderer resumeDescription(std::string const& description);
     
 public:
     Nui::ElementRenderer render();

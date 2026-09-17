@@ -13,12 +13,11 @@ emcmake cmake -G Ninja ..
 Depois compile:
 cmake --build .
 
-Para gerar o HTML através do Parcel:
+Para gerar o HTML atrav├ęs do Parcel:
 cmake --build . --target Portfolio-parcel
 
 
 Implementar
 Seletor de cores
 Seletor de idiomas
-Download do currículo de acordo com o idioma.
-Continuar I18n
+Mudar arquivos hpp para pasta include

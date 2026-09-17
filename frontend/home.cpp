@@ -1,5 +1,6 @@
 #include "home.hpp"
 #include "i18n/i18n.hpp"
+#include "router.hpp"
 
 #include <nui/frontend/attributes.hpp>
 #include <nui/frontend/elements.hpp>
@@ -12,6 +13,20 @@ Nui::ElementRenderer HomePage::render()
     using namespace Nui;
     using namespace Nui::Elements;
     using namespace Nui::Attributes;
+    /*std::vector<Nui::ElementRenderer> lines;
+        lines.push_back(
+            Nui::Elements::span{}(
+                I18n::tr("home.description")
+            )
+        );
+            lines.push_back(
+                Nui::Elements::br{}()
+            );
+        lines.push_back(
+            Nui::Elements::span{}(
+                "Teste 123"
+            )
+        );*/
 
     return Nui::Elements::div{
         class_ = "page page--current",
@@ -83,7 +98,7 @@ Nui::ElementRenderer HomePage::render()
                                  "down-lg:mt-2.5 down-lg:mb-23 "
                                  "down-lg:text-fs-15 down-lg:leading-lh-30"
                     }(
-                        I18n::tr("home.description")
+                        resumeDescription(I18n::tr("home.description"), false)
                     ),
 
                     // More About Me
