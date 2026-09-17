@@ -1,5 +1,5 @@
-#include "contact.hpp"
-#include "i18n/i18n.hpp"
+#include "frontend/contact.hpp"
+#include "frontend/i18n/i18n.hpp"
 
 #include <nui/frontend/attributes.hpp>
 #include <nui/frontend/elements.hpp>

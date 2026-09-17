@@ -1,6 +1,6 @@
-#include "home.hpp"
-#include "i18n/i18n.hpp"
-#include "router.hpp"
+#include "frontend/home.hpp"
+#include "frontend/i18n/i18n.hpp"
+#include "frontend/router.hpp"
 
 #include <nui/frontend/attributes.hpp>
 #include <nui/frontend/elements.hpp>

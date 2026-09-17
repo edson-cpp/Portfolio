@@ -1,6 +1,6 @@
-#include "i18n.hpp"
-#include "en.hpp"
-#include "pt_br.hpp"
+#include "frontend/i18n/i18n.hpp"
+#include "frontend/i18n/en.hpp"
+#include "frontend/i18n/pt_br.hpp"
 #include <emscripten/val.h>
 
 namespace

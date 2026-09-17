@@ -1,11 +1,11 @@
-#include "home.hpp"
-#include "about.hpp"
-#include "portfolio.hpp"
-#include "contact.hpp"
-#include "blog.hpp"
-#include "i18n/i18n.hpp"
-#include "router.hpp"
-#include "menu.hpp"
+#include "frontend/home.hpp"
+#include "frontend/about.hpp"
+#include "frontend/portfolio.hpp"
+#include "frontend/contact.hpp"
+#include "frontend/blog.hpp"
+#include "frontend/i18n/i18n.hpp"
+#include "frontend/router.hpp"
+#include "frontend/menu.hpp"
 
 #include <nui/core.hpp>
 #include <nui/frontend/bindings.hpp>

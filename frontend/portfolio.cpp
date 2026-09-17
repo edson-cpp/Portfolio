@@ -1,5 +1,5 @@
-#include "portfolio.hpp"
-#include "i18n/i18n.hpp"
+#include "frontend/portfolio.hpp"
+#include "frontend/i18n/i18n.hpp"
 
 #include <nui/frontend/attributes.hpp>
 #include <nui/frontend/elements.hpp>

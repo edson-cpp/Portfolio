@@ -1,6 +1,6 @@
-#include "menu.hpp"
-#include "i18n/i18n.hpp"
-#include "router.hpp"
+#include "frontend/menu.hpp"
+#include "frontend/i18n/i18n.hpp"
+#include "frontend/router.hpp"
 
 #include <string>
 #include <vector>
