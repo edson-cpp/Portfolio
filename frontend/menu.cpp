@@ -7,6 +7,7 @@
 #include <emscripten/val.h>
 
 extern "C" void routeChanged();
+bool skinOutsideClickSetup = false;
 
 namespace
 {
@@ -287,16 +288,16 @@ Nui::ElementRenderer Menu::desktopSkinItem()
     using namespace Nui::Attributes;
 
     std::vector<Skin> skins{
-        {"Yellow", "yellow.css"},
-        {"Blue", "blue.css"},
-        {"Blue Violet", "blueviolet.css"},
-        {"Goldenrod", "goldenrod.css"},
-        {"Green", "green.css"},
-        {"Magenta", "magenta.css"},
-        {"Orange", "orange.css"},
-        {"Purple", "purple.css"},
-        {"Red", "red.css"},
-        {"Yellow Green", "yellowgreen.css"}
+        {I18n::tr("menu.skin_item_yellow"), "yellow.css"},
+        {I18n::tr("menu.skin_item_blue"), "blue.css"},
+        {I18n::tr("menu.skin_item_blueviolet"), "blueviolet.css"},
+        {I18n::tr("menu.skin_item_goldenrod"), "goldenrod.css"},
+        {I18n::tr("menu.skin_item_green"), "green.css"},
+        {I18n::tr("menu.skin_item_magenta"), "magenta.css"},
+        {I18n::tr("menu.skin_item_orange"), "orange.css"},
+        {I18n::tr("menu.skin_item_purple"), "purple.css"},
+        {I18n::tr("menu.skin_item_red"), "red.css"},
+        {I18n::tr("menu.skin_item_yellowgreen"), "yellowgreen.css"}
     };
 
     std::vector<Nui::ElementRenderer> skinItems;
@@ -329,6 +330,8 @@ Nui::ElementRenderer Menu::desktopSkinItem()
     }(
         // Skin button
         Nui::Elements::div{
+            Nui::Attributes::id = "skin-button",
+
             Nui::Attributes::class_ =
                 "w-50 h-50 relative flex items-center rounded-full",
 

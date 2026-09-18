@@ -13,6 +13,17 @@ std::string translate(std::string_view key)
             {"menu.blog", "BLOG"},
             {"menu.skin", "SKIN"},
 
+            {"menu.skin_item_yellow", "Yellow"},
+            {"menu.skin_item_blue", "Blue"},
+            {"menu.skin_item_blueviolet", "Blue Violet"},
+            {"menu.skin_item_goldenrod", "Goldenrod"},
+            {"menu.skin_item_green", "Green"},
+            {"menu.skin_item_magenta", "Magenta"},
+            {"menu.skin_item_orange", "Orange"},
+            {"menu.skin_item_purple", "Purple"},
+            {"menu.skin_item_red", "Red"},
+            {"menu.skin_item_yellowgreen", "Yellow Green"},
+
             {"language.english", "English"},
             {"language.portuguese", "Português"},
 

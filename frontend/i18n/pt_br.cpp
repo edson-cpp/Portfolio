@@ -13,6 +13,17 @@ namespace I18n::Portuguese
             {"menu.blog", "BLOG"},
             {"menu.skin", "TEMA"},
 
+            {"menu.skin_item_yellow", "Amarelo"},
+            {"menu.skin_item_blue", "Azul"},
+            {"menu.skin_item_blueviolet", "Azul Violeta"},
+            {"menu.skin_item_goldenrod", "Dourado"},
+            {"menu.skin_item_green", "Verde"},
+            {"menu.skin_item_magenta", "Magenta"},
+            {"menu.skin_item_orange", "Laranja"},
+            {"menu.skin_item_purple", "Roxo"},
+            {"menu.skin_item_red", "Vermelho"},
+            {"menu.skin_item_yellowgreen", "Verde Limão"},
+
             {"language.english", "English"},
             {"language.portuguese", "Português"},
 

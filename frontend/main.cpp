@@ -24,6 +24,15 @@ static std::unique_ptr<BlogPage> blogPage;
 static std::unique_ptr<Menu> menu;
 static std::unique_ptr<Nui::Dom::Dom> dom;
 
+void setupSkinPanelOutsideClick()
+{
+    auto window = emscripten::val::global("window");
+
+    window.call<void>(
+        "setupSkinPanelOutsideClick"
+    );
+}
+
 std::string currentPath()
 {
     return emscripten::val::global("window")
@@ -143,6 +152,8 @@ extern "C" void frontendMain()
     dom = std::make_unique<Nui::Dom::Dom>();
 
     renderRoute();
+
+    setupSkinPanelOutsideClick();
 }
 
 extern "C" void routeChanged()
