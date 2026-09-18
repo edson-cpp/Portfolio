@@ -357,7 +357,7 @@ Nui::ElementRenderer Menu::desktopSkinItem()
             Nui::Elements::li{
                 Nui::Attributes::class_ =
                     "skin-item cursor-pointer px-10 py-6 rounded-5 text-white "
-                    "text-fs-14 hover:bg-black-3 "
+                    "text-fs-14 "
                     "transition duration-200 whitespace-nowrap",
 
                 Nui::Attributes::onClick = [file = skin.file]() {
