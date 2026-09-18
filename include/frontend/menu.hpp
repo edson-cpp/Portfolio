@@ -22,6 +22,7 @@ private:
     {
         std::string name;
         std::string file;
+        std::string color;
     };
 
     Nui::ElementRenderer desktopNavItem(MenuItem const& item);

@@ -38,11 +38,54 @@ namespace
     void changeSkin(std::string const& file)
     {
         auto document = emscripten::val::global("document");
-        auto skinCss = document.call<emscripten::val>("getElementById", std::string{"skin-css"});
+        auto skinCss = document.call<emscripten::val>(
+            "getElementById", 
+            std::string{"skin-css"}
+        );
 
         skinCss.set(
             "href",
             "/assets/css/skins/" + file
+        );
+
+        auto localStorage = document["defaultView"]["localStorage"];
+
+        localStorage.call<void>(
+            "setItem",
+            std::string{"portfolio-skin"},
+            file
+        );
+    }
+    
+    std::string savedSkin()
+    {
+        auto document = emscripten::val::global("document");
+
+        auto localStorage = document["defaultView"]["localStorage"];
+
+        auto value = localStorage.call<emscripten::val>(
+            "getItem",
+            std::string{"portfolio-skin"}
+        );
+
+        if (value.isNull() || value.isUndefined())
+            return "yellow.css";
+
+        return value.as<std::string>();
+    }
+
+    void loadSavedSkin()
+    {
+        auto document = emscripten::val::global("document");
+
+        auto skinCss = document.call<emscripten::val>(
+            "getElementById",
+            std::string{"skin-css"}
+        );
+
+        skinCss.set(
+            "href",
+            "/assets/css/skins/" + savedSkin()
         );
     }
 
@@ -67,7 +110,9 @@ Nui::ElementRenderer Menu::desktopNavItem(MenuItem const& item)
     using namespace Nui::Attributes;
 
     auto itemClass = std::string{
-        "desktop-nav-element cursor-pointer w-50 h-50 relative flex items-center transition duration-300 my-20 mx-0 rounded-full bg-black-2"};
+        "desktop-nav-element cursor-pointer w-50 h-50 relative "
+        "flex items-center transition duration-300 my-20 mx-0 "
+        "rounded-full bg-black-2"};
     if (item.isActive)
         itemClass += " active";
 
@@ -128,6 +173,9 @@ Nui::ElementRenderer Menu::mobileNavItem(MenuItem const& item)
 Nui::ElementRenderer Menu::render()
 {
     using namespace Nui::Attributes;
+
+    loadSavedSkin();
+
     const auto path = currentPath();
 
     std::vector<MenuItem> menuItems{
@@ -288,16 +336,16 @@ Nui::ElementRenderer Menu::desktopSkinItem()
     using namespace Nui::Attributes;
 
     std::vector<Skin> skins{
-        {I18n::tr("menu.skin_item_yellow"), "yellow.css"},
-        {I18n::tr("menu.skin_item_blue"), "blue.css"},
-        {I18n::tr("menu.skin_item_blueviolet"), "blueviolet.css"},
-        {I18n::tr("menu.skin_item_goldenrod"), "goldenrod.css"},
-        {I18n::tr("menu.skin_item_green"), "green.css"},
-        {I18n::tr("menu.skin_item_magenta"), "magenta.css"},
-        {I18n::tr("menu.skin_item_orange"), "orange.css"},
-        {I18n::tr("menu.skin_item_purple"), "purple.css"},
-        {I18n::tr("menu.skin_item_red"), "red.css"},
-        {I18n::tr("menu.skin_item_yellowgreen"), "yellowgreen.css"}
+        {I18n::tr("menu.skin_item_yellow"), "yellow.css", "yellow"},
+        {I18n::tr("menu.skin_item_blue"), "blue.css", "blue"},
+        {I18n::tr("menu.skin_item_blueviolet"), "blueviolet.css", "blueviolet"},
+        {I18n::tr("menu.skin_item_goldenrod"), "goldenrod.css", "goldenrod"},
+        {I18n::tr("menu.skin_item_green"), "green.css", "green"},
+        {I18n::tr("menu.skin_item_magenta"), "magenta.css", "magenta"},
+        {I18n::tr("menu.skin_item_orange"), "orange.css", "orange"},
+        {I18n::tr("menu.skin_item_purple"), "purple.css", "purple"},
+        {I18n::tr("menu.skin_item_red"), "red.css", "red"},
+        {I18n::tr("menu.skin_item_yellowgreen"), "yellowgreen.css", "yellowgreen"}
     };
 
     std::vector<Nui::ElementRenderer> skinItems;
@@ -308,7 +356,7 @@ Nui::ElementRenderer Menu::desktopSkinItem()
         skinItems.push_back(
             Nui::Elements::li{
                 Nui::Attributes::class_ =
-                    "cursor-pointer px-10 py-6 rounded-5 text-white "
+                    "skin-item cursor-pointer px-10 py-6 rounded-5 text-white "
                     "text-fs-14 hover:bg-black-3 "
                     "transition duration-200 whitespace-nowrap",
 
@@ -317,7 +365,22 @@ Nui::ElementRenderer Menu::desktopSkinItem()
                     toggleSkinPanel();
                 }
             }(
-                skin.name
+                // Color circle
+                Nui::Elements::span{
+                    Nui::Attributes::style =
+                        "display: inline-block; "
+                        "width: 12px; "
+                        "height: 12px; "
+                        "border-radius: 50%; "
+                        "background-color: " + skin.color + "; "
+                        "margin-right: 8px; "
+                        "flex-shrink: 0;"
+                }(),
+
+                // Skin name
+                Nui::Elements::span{}(
+                    skin.name
+                )
             )
         );
     }

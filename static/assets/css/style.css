@@ -3962,3 +3962,7 @@ video {
     transform: translateX(0);
     pointer-events: auto;
 }
+
+.skin-item:hover {
+    background-color: #070707;
+}
