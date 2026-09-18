@@ -341,7 +341,23 @@ Nui::ElementRenderer Menu::desktopSkinItem()
                     "fa fa-paint-brush absolute left-0 right-0 mx-auto "
                     "block text-center top-15 pointer-events-none "
                     "text-fs-19"
-            }()
+            }(),
+            Nui::Elements::div{
+                Nui::Attributes::class_ = "group block p-0 w-50 h-50"
+            }(
+                Nui::Elements::h2{
+                    Nui::Attributes::class_ =
+                        "absolute text-center -z-10 block h-50 pr-25 pl-30 "
+                        "text-fs-15 right-0 opacity-0 text-white "
+                        "leading-lh-50 font-medium transition-all duration-300 "
+                        "rounded-30 group-hover:opacity-100 "
+                        "group-hover:right-27 "
+                        "group-hover:rounded-tl-30 group-hover:rounded-bl-30 "
+                        "group-hover:rounded-tr-none group-hover:rounded-br-none"
+                }(
+                    I18n::tr("menu.skin")
+                )
+            )
         ),
 
         // Skin panel

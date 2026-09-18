@@ -11,6 +11,7 @@ std::string translate(std::string_view key)
             {"menu.portfolio", "PORTFOLIO"},
             {"menu.contact", "CONTACT"},
             {"menu.blog", "BLOG"},
+            {"menu.skin", "SKIN"},
 
             {"language.english", "English"},
             {"language.portuguese", "Português"},
@@ -159,6 +160,19 @@ std::string translate(std::string_view key)
             {"contact.get_in", "get in"},
             {"contact.touch", "touch"},
             {"contact.contact", "contact"},
+
+            {"contact.content_title", "don't be shy!"},
+            {"contact.content_message", "Feel free to get in touch with me. "
+                                    "I am always open to discussing new "
+                                    "projects, creative ideas or opportunities "
+                                    "to be part of your visions."},                        
+            {"contact.content_mail_me", "mail me"},
+            {"contact.content_call_me", "call me"},
+            {"contact.content_contactForm_placeHolder", "YOUR NAME"},
+            {"contact.content_contactForm_email", "YOUR EMAIL"},
+            {"contact.content_contactForm_subject", "YOUR SUBJECT"},
+            {"contact.content_contactForm_message", "YOUR MESSAGE"},
+            {"contact.content_contactForm_sendMessage", "send message"},
 
             {"blog.my", "my"},
             {"blog.blog", "blog"},

@@ -19,5 +19,3 @@ cmake --build . --target Portfolio-parcel
 
 Implementar
 Seletor de cores
-Seletor de idiomas
-Mudar arquivos hpp para pasta include

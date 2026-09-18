@@ -11,6 +11,7 @@ namespace I18n::Portuguese
             {"menu.portfolio", "PORTIFÓLIO"},
             {"menu.contact", "CONTATO"},
             {"menu.blog", "BLOG"},
+            {"menu.skin", "TEMA"},
 
             {"language.english", "English"},
             {"language.portuguese", "Português"},
@@ -166,6 +167,19 @@ namespace I18n::Portuguese
             {"contact.get_in", "Entre em"},
             {"contact.touch", "contato"},
             {"contact.contact", "contato"},
+
+            {"contact.content_title", "não seja tímido!"},
+            {"contact.content_message", "Fique à vontade para entrar em contato comigo. "
+                                    "Estou sempre aberto a conversar sobre novos "
+                                    "projetos, ideias criativas ou oportunidades "
+                                    "de fazer parte de suas visões."},
+            {"contact.content_mail_me", "Envie-me um e-mail"},
+            {"contact.content_call_me", "Ligue me"},
+            {"contact.content_contactForm_placeHolder", "SEU NOME"},
+            {"contact.content_contactForm_email", "SEU EMAIL"},
+            {"contact.content_contactForm_subject", "SEU ASSUNTO"},
+            {"contact.content_contactForm_message", "SUA MENSAGEM"},
+            {"contact.content_contactForm_sendMessage", "enviar mensagem"},
 
             {"blog.my", "meu"},
             {"blog.blog", "blog"},
