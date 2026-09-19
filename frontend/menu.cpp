@@ -494,23 +494,23 @@ Nui::ElementRenderer Menu::mobileSkinItem()
         skinItems.push_back(
             Nui::Elements::li{
                 Nui::Attributes::class_ =
-                    "skin-item cursor-pointer px-10 py-6 rounded-5 text-white "
-                    "text-fs-14 transition duration-200 whitespace-nowrap "
+                    "skin-item cursor-pointer px-10 py-10 rounded-5 text-white "
+                    "text-fs-18 transition duration-200 whitespace-nowrap "
                     "flex items-center",
 
                 Nui::Attributes::onClick = [file = skin.file]() {
                     changeSkin(file);
-                    toggleMobileSkinPanel();
+                    routeChanged();
                 }
             }(
                 Nui::Elements::span{
                     Nui::Attributes::style =
                         "display: inline-block; "
-                        "width: 12px; "
-                        "height: 12px; "
+                        "width: 16px; "
+                        "height: 16px; "
                         "border-radius: 50%; "
                         "background-color: " + skin.color + "; "
-                        "margin-right: 8px; "
+                        "margin-right: 10px; "
                         "flex-shrink: 0;"
                 }(),
 
