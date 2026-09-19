@@ -531,7 +531,20 @@ Nui::ElementRenderer Menu::mobileSkinItem()
                 "text-fs-26 xs:text-fs-18 py-14",
 
             Nui::Attributes::onClick = []() {
-                toggleMobileSkinPanel();
+                auto document = emscripten::val::global("document");
+
+                auto panel = document.call<emscripten::val>(
+                    "getElementById",
+                    std::string{"mobile-skin-panel"}
+                );
+
+                auto isHidden = panel["classList"].call<bool>(
+                    "contains",
+                    std::string{"hidden"}
+                );
+
+                if (isHidden)
+                    toggleMobileSkinPanel();
             }
         }(
             Nui::Elements::i{
@@ -551,13 +564,14 @@ Nui::ElementRenderer Menu::mobileSkinItem()
             Nui::Attributes::id = "mobile-skin-panel",
 
             Nui::Attributes::class_ =
-                "hidden bg-black-2 rounded-10 shadow-1 p-5 "
-                "mt-5",
+                "hidden bg-black-2 rounded-10 shadow-1 p-5 mt-5",
 
             Nui::Attributes::style =
                 "width: 170px; "
-                "margin-left: 150px;"
-                "margin-top: -300px"
+                "margin-left: 150px; "
+                "margin-top: -300px; "
+                "position: relative; "
+                "z-index: 1000; "
         }(
             Nui::Elements::ul{
                 Nui::Attributes::class_ = "m-0 p-0"
