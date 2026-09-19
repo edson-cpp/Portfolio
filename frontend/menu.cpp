@@ -103,6 +103,21 @@ namespace
             std::string{"skin-panel-visible"}
         );
     }
+
+    void toggleMobileSkinPanel()
+    {
+        auto document = emscripten::val::global("document");
+
+        auto panel = document.call<emscripten::val>(
+            "getElementById",
+            std::string{"mobile-skin-panel"}
+        );
+
+        panel["classList"].call<void>(
+            "toggle",
+            std::string{"hidden"}
+        );
+    }
 }
 
 Nui::ElementRenderer Menu::desktopNavItem(MenuItem const& item)
@@ -201,6 +216,7 @@ Nui::ElementRenderer Menu::render()
     desktopItems.push_back(desktopLanguageItem());
     mobileItems.push_back(mobileLanguageItem());
     desktopItems.push_back(desktopSkinItem());
+    mobileItems.push_back(mobileSkinItem());
 
     return Nui::Elements::header{
         Nui::Attributes::id = "navbar-collapse-toggle",
@@ -322,8 +338,11 @@ Nui::ElementRenderer Menu::mobileLanguageItem()
                     "absolute top-15 pointer-events-none"
             }(),
             Nui::Elements::span{
-                Nui::Attributes::class_ =
-                    "absolute left-50 xs:left-35 font-normal"
+                Nui::Attributes::class_ = "font-normal",
+
+                Nui::Attributes::style =
+                    "display: inline-block; "
+                    "margin-left: 35px;"
             }(
                 languageName()
             )
@@ -440,6 +459,104 @@ Nui::ElementRenderer Menu::desktopSkinItem()
                 "right: 65px; "
                 "bottom: 0; "
                 "width: 150px;"
+        }(
+            Nui::Elements::ul{
+                Nui::Attributes::class_ = "m-0 p-0"
+            }(
+                skinItems
+            )
+        )
+    );
+}
+
+Nui::ElementRenderer Menu::mobileSkinItem()
+{
+    using namespace Nui::Attributes;
+
+    std::vector<Skin> skins{
+        {I18n::tr("menu.skin_item_yellow"), "yellow.css", "yellow"},
+        {I18n::tr("menu.skin_item_blue"), "blue.css", "blue"},
+        {I18n::tr("menu.skin_item_blueviolet"), "blueviolet.css", "blueviolet"},
+        {I18n::tr("menu.skin_item_goldenrod"), "goldenrod.css", "goldenrod"},
+        {I18n::tr("menu.skin_item_green"), "green.css", "green"},
+        {I18n::tr("menu.skin_item_magenta"), "magenta.css", "magenta"},
+        {I18n::tr("menu.skin_item_orange"), "orange.css", "orange"},
+        {I18n::tr("menu.skin_item_purple"), "purple.css", "purple"},
+        {I18n::tr("menu.skin_item_red"), "red.css", "red"},
+        {I18n::tr("menu.skin_item_yellowgreen"), "yellowgreen.css", "yellowgreen"}
+    };
+
+    std::vector<Nui::ElementRenderer> skinItems;
+    skinItems.reserve(skins.size());
+
+    for (auto const& skin : skins)
+    {
+        skinItems.push_back(
+            Nui::Elements::li{
+                Nui::Attributes::class_ =
+                    "skin-item cursor-pointer px-10 py-6 rounded-5 text-white "
+                    "text-fs-14 transition duration-200 whitespace-nowrap "
+                    "flex items-center",
+
+                Nui::Attributes::onClick = [file = skin.file]() {
+                    changeSkin(file);
+                    toggleMobileSkinPanel();
+                }
+            }(
+                Nui::Elements::span{
+                    Nui::Attributes::style =
+                        "display: inline-block; "
+                        "width: 12px; "
+                        "height: 12px; "
+                        "border-radius: 50%; "
+                        "background-color: " + skin.color + "; "
+                        "margin-right: 8px; "
+                        "flex-shrink: 0;"
+                }(),
+
+                Nui::Elements::span{}(
+                    skin.name
+                )
+            )
+        );
+    }
+
+    return Nui::Elements::li{
+        Nui::Attributes::class_ =
+            "mobile-nav-element relative pl-30 cursor-pointer"
+    }(
+        Nui::Elements::div{
+            Nui::Attributes::class_ =
+                "uppercase delay-2000 no-underline relative "
+                "text-fs-26 xs:text-fs-18 py-14",
+
+            Nui::Attributes::onClick = []() {
+                toggleMobileSkinPanel();
+            }
+        }(
+            Nui::Elements::i{
+                Nui::Attributes::class_ =
+                    "fa fa-paint-brush"
+            }(),
+
+            Nui::Elements::span{
+                Nui::Attributes::class_ =
+                    "absolute left-50 xs:left-35 font-normal"
+            }(
+                I18n::tr("menu.skin")
+            )
+        ),
+
+        Nui::Elements::div{
+            Nui::Attributes::id = "mobile-skin-panel",
+
+            Nui::Attributes::class_ =
+                "hidden bg-black-2 rounded-10 shadow-1 p-5 "
+                "mt-5",
+
+            Nui::Attributes::style =
+                "width: 150px; "
+                "margin-left: 50px;"
         }(
             Nui::Elements::ul{
                 Nui::Attributes::class_ = "m-0 p-0"
