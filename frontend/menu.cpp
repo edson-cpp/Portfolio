@@ -555,8 +555,8 @@ Nui::ElementRenderer Menu::mobileSkinItem()
                 "mt-5",
 
             Nui::Attributes::style =
-                "width: 250px; "
-                "margin-left: 200px;"
+                "width: 170px; "
+                "margin-left: 150px;"
                 "margin-top: -300px"
         }(
             Nui::Elements::ul{
