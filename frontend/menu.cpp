@@ -494,8 +494,8 @@ Nui::ElementRenderer Menu::mobileSkinItem()
         skinItems.push_back(
             Nui::Elements::li{
                 Nui::Attributes::class_ =
-                    "skin-item cursor-pointer px-10 py-10 rounded-5 text-white "
-                    "text-fs-18 transition duration-200 whitespace-nowrap "
+                    "skin-item cursor-pointer px-10 py-12 rounded-5 text-white "
+                    "text-fs-24 transition duration-200 whitespace-nowrap "
                     "flex items-center",
 
                 Nui::Attributes::onClick = [file = skin.file]() {
@@ -506,8 +506,8 @@ Nui::ElementRenderer Menu::mobileSkinItem()
                 Nui::Elements::span{
                     Nui::Attributes::style =
                         "display: inline-block; "
-                        "width: 16px; "
-                        "height: 16px; "
+                        "width: 20px; "
+                        "height: 20px; "
                         "border-radius: 50%; "
                         "background-color: " + skin.color + "; "
                         "margin-right: 10px; "
@@ -555,7 +555,7 @@ Nui::ElementRenderer Menu::mobileSkinItem()
                 "mt-5",
 
             Nui::Attributes::style =
-                "width: 150px; "
+                "width: 250px; "
                 "margin-left: 50px;"
         }(
             Nui::Elements::ul{
