@@ -523,7 +523,9 @@ Nui::ElementRenderer Menu::mobileSkinItem()
 
     return Nui::Elements::li{
         Nui::Attributes::class_ =
-            "mobile-nav-element relative pl-30 cursor-pointer"
+            "mobile-nav-element relative pl-30 cursor-pointer",
+        Nui::Attributes::style =
+            "-webkit-tap-highlight-color: transparent;"
     }(
         Nui::Elements::div{
             Nui::Attributes::class_ =
